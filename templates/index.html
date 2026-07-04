@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="app">
+    <header class="app-header">
+      <span class="eyebrow">SPEAK · THINK · RESPOND</span>
+      <h1>Voice Agent</h1>
+      <p class="subhead">A conversational agent you can watch reason — every tool call surfaces live.</p>
+    </header>
+
+    <main class="chat" id="chat">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-orb"></div>
+        <p>Tap the mic and say something —<br>try "what's 847 times 23?"</p>
+      </div>
+    </main>
+
+    <footer class="control-bar">
+      <div class="status-label" id="statusLabel">idle</div>
+
+      <div class="mic-wrap">
+        <div class="wave-ring wave-ring-1"></div>
+        <div class="wave-ring wave-ring-2"></div>
+        <div class="wave-ring wave-ring-3"></div>
+        <button id="micButton" class="mic-button" aria-label="Start talking">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 15C13.66 15 15 13.66 15 12V6C15 4.34 13.66 3 12 3C10.34 3 9 4.34 9 6V12C9 13.66 10.34 15 12 15Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 10V12C19 15.87 15.87 19 12 19C8.13 19 5 15.87 5 12V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 19V22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <form class="text-fallback" id="textForm">
+        <input type="text" id="textInput" placeholder="...or type instead" autocomplete="off">
+        <button type="submit" aria-label="Send">→</button>
+      </form>
+    </footer>
+  </div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

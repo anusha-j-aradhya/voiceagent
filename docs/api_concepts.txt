@@ -1,0 +1,34 @@
+Core Claude API Concepts
+
+Messages API: The primary way to talk to Claude. You send a list of messages
+(each with a role of "user" or "assistant") and Claude returns the next
+assistant message. Conversations are stateless on the server, so the full
+history must be resent with every request.
+
+System Prompts: A top-level `system` parameter sets persistent instructions,
+persona, or context that applies to the whole conversation, separate from the
+back-and-forth messages list.
+
+Tool Use: Claude can be given a list of tools (functions) with JSON schemas
+describing their inputs. When Claude decides a tool would help answer a
+request, it returns a `tool_use` content block instead of, or alongside, text.
+The calling application executes the tool and sends the result back as a
+`tool_result` block so Claude can continue reasoning with that new information.
+
+Streaming: Instead of waiting for a full response, the API can stream back
+partial output as it's generated, which is useful for chat interfaces where
+you want to show text appearing progressively.
+
+Prompt Caching: Large, reusable chunks of context (like a long system prompt,
+a knowledge base, or a big document) can be marked with a cache breakpoint.
+On subsequent requests that reuse the same prefix, Anthropic can skip
+reprocessing that content, which reduces both latency and cost.
+
+Retrieval Augmented Generation (RAG): Rather than relying purely on a model's
+training data, RAG systems first search an external knowledge base for
+relevant passages, then insert those passages into the prompt so Claude can
+ground its answer in up-to-date or domain-specific information.
+
+Extended Thinking: A mode where the model produces an internal reasoning
+trace before its final answer, useful for harder analytical or multi-step
+problems.

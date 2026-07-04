@@ -1,0 +1,26 @@
+Claude Model Family Overview
+
+Claude is Anthropic's family of large language models. Models are generally offered
+in a few tiers that trade off speed, cost, and capability:
+
+- Haiku: the fastest and most cost-effective tier. Good for high-volume, latency
+  sensitive tasks like classification, simple extraction, and chat where speed
+  matters more than deep reasoning.
+
+- Sonnet: a balanced tier suited for most production workloads. It offers strong
+  reasoning and coding ability at a moderate cost and latency, making it the
+  default choice for many applications.
+
+- Opus: the most capable tier, intended for the hardest reasoning, research, and
+  agentic tasks where quality matters more than raw speed or cost.
+
+Anthropic periodically releases new generations of these models. Each generation
+typically improves reasoning, coding, tool use reliability, and context handling
+compared to the previous one. Developers select a model by passing its model
+string (for example "claude-sonnet-5") in the `model` field of a Messages API
+request.
+
+Extended thinking is a feature that lets a model allocate extra internal
+reasoning tokens before producing a final answer, which tends to improve
+performance on complex, multi-step problems such as math, logic puzzles, and
+planning tasks.
